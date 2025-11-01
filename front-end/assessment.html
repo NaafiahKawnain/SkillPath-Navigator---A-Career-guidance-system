@@ -1,0 +1,429 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>Assessment - SkillPath Navigator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --brand:#5a73e4;
+      --brand-dark:#4058cc;
+      --bg-grad: linear-gradient(135deg, #ffb6c1, #d8a9ff, #87cefa);
+    }
+    body {
+      font-family: Arial, sans-serif;
+      background: var(--bg-grad);
+      min-height: 100vh;
+      margin: 0;
+      padding: 0;
+      color:#212020;
+    }
+    header {
+      background: #219ae080;
+      color: #212020;
+      padding: 18px 14px;
+      text-align: center;
+      font-size: 1.8em;
+      font-weight: bold;
+      border-bottom: 1px solid rgba(0,0,0,0.06);
+    }
+    .container {
+      max-width: 860px;
+      margin: 28px auto;
+      background: whitesmoke;
+      border-radius: 12px;
+      box-shadow: 0 6px 16px rgba(0,0,0,0.15);
+      overflow: hidden;
+    }
+    .shell { padding: 18px 20px 22px; }
+
+    /* Progress */
+    .toprow{
+      display:flex; align-items:center; gap:14px; margin-bottom:12px;
+    }
+    .progress-text{
+      min-width:130px; color:#444; font-weight:600;
+    }
+    .progress-wrap{
+      flex:1; background:#e9ecf3; height:10px; border-radius:999px; overflow:hidden;
+    }
+    .progress-bar{
+      height:100%; width:0%; background:linear-gradient(90deg, var(--brand), #7d9cf5);
+      border-radius:999px; transition: width 300ms ease;
+    }
+
+    /* Slider */
+    .slider-viewport{
+      position:relative;
+      overflow:hidden;
+      border-radius:10px;
+      background:#fff;
+      transition: box-shadow 250ms ease;
+    }
+    .slider-viewport:focus-within{ box-shadow: 0 0 0 3px rgba(90,115,228,.2); }
+    .slider-track{
+      display:flex;
+      width:100%;
+      will-change: transform;
+      transition: transform 380ms cubic-bezier(.22,.61,.36,1);
+    }
+    .slide{
+      width:100%;
+      flex: 0 0 100%;
+      padding: 18px 18px 2px;
+      box-sizing: border-box;
+    }
+
+    /* Question */
+    .category{
+      display:inline-block; font-size:.85em; color:#2a2a2a;
+      background:#eef3ff; border:1px solid #dbe5ff; padding:4px 10px; border-radius:999px;
+      margin-bottom:8px;
+    }
+    .question-text{
+      font-size: 1.2em; font-weight:700; color:#2c2c2c; margin:6px 0 10px;
+    }
+
+    /* Options styled as cards */
+    .options{ display:grid; gap:10px; }
+    .opt{
+      display:flex; align-items:flex-start; gap:10px;
+      background:#f9fafc; border:1px solid #e3e7ef; border-radius:10px;
+      padding:12px; cursor:pointer; transition: transform 160ms ease, box-shadow 160ms ease, border-color 160ms ease;
+    }
+    .opt:hover{ transform: translateY(-1px); box-shadow: 0 4px 12px rgba(0,0,0,.08); }
+    .opt input{ margin-top:3px; transform: scale(1.1); }
+    .opt.active{ border-color: var(--brand); background:#f2f5ff; box-shadow: 0 6px 16px rgba(90,115,228,.18); }
+    .opt .opt-text{ line-height:1.4; }
+
+    /* Review (final slide) */
+    textarea {
+      width: 100%;
+      min-height: 110px;
+      padding: 12px;
+      border-radius: 8px;
+      border: 1px solid #d6d6d6;
+      resize: vertical;
+      font-family: inherit;
+      margin-top: 8px;
+      background: #fcfcfc;
+    }
+    .hint {
+      font-size: 0.9em;
+      color: #666;
+      margin: 6px 0 12px;
+    }
+    .review{
+      background:#fbfbff; border:1px dashed #dbe5ff; border-radius:10px; padding:12px; color:#333;
+    }
+
+    /* Nav buttons */
+    .controls {
+      display:flex; justify-content:space-between; align-items:center;
+      padding: 14px 2px 2px; gap:10px;
+    }
+    .btn {
+      background-color: var(--brand);
+      color: white; border: none; padding: 12px 18px; border-radius: 8px; cursor: pointer; font-size: 1em;
+      transition: background 180ms ease, transform 80ms ease;
+    }
+    .btn:hover { background-color: var(--brand-dark); }
+    .btn:active { transform: translateY(1px); }
+    .btn.secondary { background:#e9edf7; color:#2a2a2a; }
+    .btn.secondary:hover { background:#dde5fb; }
+    .btn[disabled] { opacity: 0.6; cursor: not-allowed; }
+
+    .status {
+      text-align: center; margin-top: 10px; color: #c0392b;
+    }
+
+    @media (max-width:600px){
+      .container{ margin: 16px; }
+      .shell{ padding: 12px 14px 16px; }
+      .btn{ padding: 11px 14px; }
+    }
+  </style>
+</head>
+<body>
+
+<header>SkillPath Navigator — Assessment</header>
+
+<div class="container" id="app">
+  <div class="shell">
+    <div class="toprow">
+      <div class="progress-text" id="progressText">Loading…</div>
+      <div class="progress-wrap"><div class="progress-bar" id="progressBar"></div></div>
+    </div>
+
+    <div class="slider-viewport" id="viewport" tabindex="-1">
+      <div class="slider-track" id="track" aria-live="polite"></div>
+    </div>
+
+    <div class="controls">
+      <button type="button" class="btn secondary" id="prevBtn">Previous</button>
+      <div style="display:flex; gap:8px;">
+        <button type="button" class="btn" id="nextBtn">Next</button>
+        <button type="button" class="btn" id="submitBtn" style="display:none;">Submit</button>
+      </div>
+    </div>
+
+    <div id="status" class="status" role="status" aria-live="polite"></div>
+  </div>
+</div>
+
+<script>
+let QUESTIONS = [];
+let answers = {};  // { [question_id]: score }
+let current = 0;   // slide index (0..N for questions, N = review slide)
+let totalSlides = 0;
+
+document.addEventListener("DOMContentLoaded", init);
+
+async function init() {
+  const statusEl = document.getElementById("status");
+  statusEl.textContent = "Loading questions...";
+  try {
+    const res = await fetch("/api/questions");
+    if (!res.ok) throw new Error(`HTTP ${res.status}`);
+    const data = await res.json();
+    if (!Array.isArray(data) || data.length === 0) {
+      statusEl.textContent = "No questions available. Please try again later.";
+      return;
+    }
+    QUESTIONS = data;
+    totalSlides = QUESTIONS.length + 1; // +1 for review/NLP slide
+    buildSlides();
+    bindNav();
+    updateUI();
+    statusEl.textContent = "";
+  } catch (err) {
+    console.error(err);
+    statusEl.textContent = "Failed to load questions. Please try again.";
+  }
+}
+
+function buildSlides() {
+  const track = document.getElementById("track");
+  track.innerHTML = "";
+
+  // Build a slide for each question
+  QUESTIONS.forEach((q) => {
+    const slide = document.createElement("section");
+    slide.className = "slide";
+    slide.setAttribute("data-qid", q.question_id);
+
+    const cat = document.createElement("div");
+    cat.className = "category";
+    cat.textContent = q.category;
+
+    const h = document.createElement("div");
+    h.className = "question-text";
+    h.textContent = q.text;
+
+    const opts = document.createElement("div");
+    opts.className = "options";
+
+    (q.options || []).forEach((opt, i) => {
+      const id = `opt_${q.question_id}_${opt.id}`;
+      const label = document.createElement("label");
+      label.className = "opt";
+      label.setAttribute("for", id);
+
+      const input = document.createElement("input");
+      input.type = "radio";
+      input.name = `q_${q.question_id}`;
+      input.value = String(opt.score);
+      input.id = id;
+      input.dataset.qid = q.question_id;
+
+      // Pre-check if already answered (when going back)
+      if (String(answers[q.question_id]) === String(opt.score)) {
+        input.checked = true;
+        label.classList.add("active");
+      }
+
+      input.addEventListener("change", () => {
+        answers[q.question_id] = parseInt(input.value, 10) || 0;
+        // Highlight selection
+        label.parentElement.querySelectorAll(".opt").forEach(el => el.classList.remove("active"));
+        label.classList.add("active");
+        // Enable Next when one option chosen
+        enableNextIfAnswered();
+      });
+
+      const span = document.createElement("div");
+      span.className = "opt-text";
+      span.textContent = opt.text;
+
+      label.appendChild(input);
+      label.appendChild(span);
+      opts.appendChild(label);
+    });
+
+    slide.appendChild(cat);
+    slide.appendChild(h);
+    slide.appendChild(opts);
+    track.appendChild(slide);
+  });
+
+  // Final review + NLP slide
+  const review = document.createElement("section");
+  review.className = "slide";
+  review.innerHTML = `
+    <div class="question-text">Review & Submit</div>
+    <div class="review" id="reviewBox">
+      <div id="reviewSummary">You have answered 0 of ${QUESTIONS.length} questions.</div>
+    </div>
+    <div style="height:10px;"></div>
+    <div class="question-text" style="font-weight:600;">Tell us about yourself </div>
+    <textarea id="freeText" placeholder="Example: I love building apps with Python and JavaScript, solving logic puzzles, and working on UI/UX."></textarea>
+    <div class="hint">Tip: mention tools/skills/interests like Python, SQL, design, cloud, security, problem solving, etc.</div>
+  `;
+  track.appendChild(review);
+
+  adjustViewportHeight();
+}
+
+function bindNav() {
+  document.getElementById("prevBtn").addEventListener("click", () => go(-1));
+  document.getElementById("nextBtn").addEventListener("click", () => go(1));
+  document.getElementById("submitBtn").addEventListener("click", submitAll);
+
+  // Keyboard navigation (left/right, enter to next)
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "ArrowRight") go(1);
+    if (e.key === "ArrowLeft") go(-1);
+    if (e.key === "Enter") {
+      // Only auto-next if on a question slide and selected
+      if (current < QUESTIONS.length && isCurrentAnswered()) go(1);
+    }
+  });
+
+  // Adjust container height on resize
+  window.addEventListener("resize", adjustViewportHeight);
+
+  // Touch swipe (basic)
+  let startX = null;
+  const viewport = document.getElementById("viewport");
+  viewport.addEventListener("touchstart", (e) => startX = e.touches[0].clientX, {passive:true});
+  viewport.addEventListener("touchend", (e) => {
+    if (startX === null) return;
+    const dx = e.changedTouches[0].clientX - startX;
+    if (Math.abs(dx) > 50) {
+      if (dx < 0) go(1);
+      else go(-1);
+    }
+    startX = null;
+  });
+}
+
+function go(delta) {
+  const statusEl = document.getElementById("status");
+
+  // If moving forward from a question slide, ensure it's answered
+  if (delta > 0 && current < QUESTIONS.length && !isCurrentAnswered()) {
+    statusEl.textContent = "Please select an option to continue.";
+    return;
+  }
+  statusEl.textContent = "";
+
+  current = Math.max(0, Math.min(totalSlides - 1, current + delta));
+  updateUI();
+}
+
+function isCurrentAnswered() {
+  if (current >= QUESTIONS.length) return true; // review slide
+  const q = QUESTIONS[current];
+  return answers.hasOwnProperty(q.question_id);
+}
+
+function enableNextIfAnswered() {
+  const nextBtn = document.getElementById("nextBtn");
+  nextBtn.disabled = !(current < QUESTIONS.length && isCurrentAnswered());
+}
+
+function updateUI() {
+  // Move slider
+  const track = document.getElementById("track");
+  track.style.transform = `translateX(-${current * 100}%)`;
+
+  // Buttons visibility
+  const prevBtn = document.getElementById("prevBtn");
+  const nextBtn = document.getElementById("nextBtn");
+  const submitBtn = document.getElementById("submitBtn");
+
+  prevBtn.disabled = current === 0;
+  if (current < QUESTIONS.length) {
+    nextBtn.style.display = "";
+    submitBtn.style.display = "none";
+    nextBtn.textContent = (current === QUESTIONS.length - 1) ? "Review" : "Next";
+    enableNextIfAnswered();
+  } else {
+    nextBtn.style.display = "none";
+    submitBtn.style.display = "";
+    // Update the review box
+    const answeredCount = Object.keys(answers).length;
+    document.getElementById("reviewSummary").textContent =
+      `You have answered ${answeredCount} of ${QUESTIONS.length} questions.`;
+  }
+
+  // Progress
+  const progressText = document.getElementById("progressText");
+  const progressBar = document.getElementById("progressBar");
+  const numerator = Math.min(current + 1, QUESTIONS.length);
+  progressText.textContent = `Question ${numerator} of ${QUESTIONS.length}`;
+  const pct = Math.round((numerator / QUESTIONS.length) * 100);
+  progressBar.style.width = `${pct}%`;
+
+  adjustViewportHeight();
+}
+
+function adjustViewportHeight() {
+  // Smoothly adapt viewport height to current slide
+  const viewport = document.getElementById("viewport");
+  const slides = Array.from(document.querySelectorAll(".slide"));
+  const curEl = slides[current];
+  if (!curEl) return;
+  const h = curEl.getBoundingClientRect().height;
+  viewport.style.height = h + "px";
+}
+
+async function submitAll() {
+  const statusEl = document.getElementById("status");
+  const freeText = document.getElementById("freeText").value.trim();
+
+  // Ensure all answered
+  if (Object.keys(answers).length < QUESTIONS.length) {
+    statusEl.textContent = "Please answer all questions before submitting.";
+    return;
+  }
+
+  statusEl.textContent = "Submitting...";
+  const submitBtn = document.getElementById("submitBtn");
+  submitBtn.disabled = true;
+
+  try {
+    const res = await fetch("/api/submit", {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ answers, text: freeText })
+    });
+    const data = await res.json().catch(() => ({}));
+    if (!res.ok) {
+      statusEl.textContent = data.error || "Submission failed. Please try again.";
+      return;
+    }
+    // Store and go to results
+    sessionStorage.setItem("spnResult", JSON.stringify(data));
+    window.location.href = "result.html";
+  } catch (err) {
+    console.error(err);
+    statusEl.textContent = "Server error. Please try again later.";
+  } finally {
+    submitBtn.disabled = false;
+  }
+}
+</script>
+
+</body>
+</html>

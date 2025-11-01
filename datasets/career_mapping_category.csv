@@ -1,0 +1,92 @@
+﻿id,career_id,category
+1,c1,Technical Knowledge
+2,c1,Problem Solving
+3,c1,Logical Reasoning
+4,c2,Logical Reasoning
+5,c2,Technical Knowledge
+6,c2,Time Management
+7,c3,Technical Knowledge
+8,c3,Creativity
+9,c3,Problem Solving
+10,c4,Technical Knowledge
+11,c4,Creativity
+12,c4,Problem Solving
+13,c5,Technical Knowledge
+14,c5,Time Management
+15,c6,Logical Reasoning
+16,c6,Problem Solving
+17,c7,Technical Knowledge
+18,c7,Problem Solving
+19,c8,Creativity
+20,c8,Communication Skills
+21,c9,Technical Knowledge
+22,c9,Problem Solving
+23,c10,Technical Knowledge
+24,c10,Creativity
+25,c11,Time Management
+26,c11,Communication Skills
+27,c12,Logical Reasoning
+28,c12,Problem Solving
+29,c13,Technical Knowledge
+30,c13,Problem Solving
+31,c14,Technical Knowledge
+32,c14,Logical Reasoning
+33,c15,Creativity
+34,c15,Technical Knowledge
+35,c16,Technical Knowledge
+36,c16,Time Management
+37,c17,Technical Knowledge
+38,c17,Problem Solving
+39,c18,Technical Knowledge
+40,c18,Logical Reasoning
+41,c19,Time Management
+42,c19,Communication Skills
+43,c20,Creativity
+44,c20,Communication Skills
+45,c21,Logical Reasoning
+46,c21,Communication Skills
+47,c22,Creativity
+48,c22,Problem Solving
+49,c23,Communication Skills
+50,c23,Time Management
+51,c24,Logical Reasoning
+52,c24,Problem Solving
+53,c25,Technical Knowledge
+54,c25,Creativity
+55,c25,Time Management
+56,c6,Technical Knowledge
+57,c16,Problem Solving
+58,c19,Problem Solving
+59,c24,Creativity
+60,c12,Communication Skills
+61,c14,Communication Skills
+62,c26,Technical Knowledge
+63,c26,Problem Solving
+64,c26,Logical Reasoning
+65,c27,Technical Knowledge
+66,c27,Problem Solving
+67,c27,Time Management
+68,c28,Logical Reasoning
+69,c28,Technical Knowledge
+70,c28,Communication Skills
+71,c29,Technical Knowledge
+72,c29,Problem Solving
+73,c29,Logical Reasoning
+74,c30,Creativity
+75,c30,Technical Knowledge
+76,c30,Problem Solving
+77,c31,Technical Knowledge
+78,c31,Logical Reasoning
+79,c31,Problem Solving
+80,c32,Technical Knowledge
+81,c32,Logical Reasoning
+82,c32,Problem Solving
+83,c33,Communication Skills
+84,c33,Problem Solving
+85,c33,Time Management
+86,c34,Communication Skills
+87,c34,Time Management
+88,c34,Problem Solving
+89,c35,Technical Knowledge
+90,c35,Problem Solving
+91,c35,Time Management

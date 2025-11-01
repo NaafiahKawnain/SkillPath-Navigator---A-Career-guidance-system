@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Register - SkillPath Navigator</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <style>
+        body { 
+            font-family: Arial; 
+            margin: 0; 
+            padding: 0; 
+            height: 100vh;
+            background: linear-gradient(135deg, #d48bda, #ae8edb, #5a73e4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container { 
+            max-width: 350px; 
+            margin: 80px auto; 
+            background: whitesmoke; 
+            padding: 50px; 
+            border-radius: 10px; 
+        }
+        h2 { text-align: center; }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 8px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        }
+        button { 
+            background-color: #313030; 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            width: 100%; 
+            border-radius: 5px; 
+            cursor: pointer; 
+        }
+        button[disabled] { opacity: 0.7; cursor: not-allowed; }
+        button:hover { background-color: #0056b3; }
+        .error { color: red; font-size: 0.9em; text-align: center; }
+        .success { color: green; text-align: center; }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Create an account</h2>
+        <form id="registerForm" autocomplete="on">
+            <input type="text" id="username" name="username" placeholder="Username" autocomplete="username" required>
+            <input type="password" id="password" name="password" placeholder="Password" autocomplete="new-password" required>
+            <input type="email" id="email" name="email" placeholder="Email (example@gmail.com)" autocomplete="email" required>
+            <div id="emailError" class="error"></div>
+            <input type="tel" id="phone" name="phone" placeholder="Phone Number" inputmode="numeric" pattern="[0-9]{10}" autocomplete="tel" required>
+            <div id="phoneError" class="error"></div>
+            <input type="text" id="country" name="country" placeholder="Country" autocomplete="country-name" required>
+            <button type="submit">Register</button>
+            <p style="text-align:center; margin-top: 15px;">
+                Already have an account? 
+                <a href="login.html" style="color:#0056b3;">Login here</a>
+            </p>
+            <p id="statusMsg"></p>
+        </form>
+    </div>
+
+    <script>
+const API = "http://127.0.0.1:5000"; // change here if your backend port changes
+
+document.getElementById("registerForm").addEventListener("submit", async function(e) {
+    e.preventDefault();
+
+    const emailInput = document.getElementById("email");
+    const phoneInput = document.getElementById("phone");
+    const usernameInput = document.getElementById("username");
+    const passwordInput = document.getElementById("password");
+    const countryInput = document.getElementById("country");
+
+    const email = emailInput.value.trim();
+    const phone = phoneInput.value.trim();
+    const username = usernameInput.value.trim();
+    const password = passwordInput.value.trim();
+    const country = countryInput.value.trim();
+
+    const emailError = document.getElementById("emailError");
+    const phoneError = document.getElementById("phoneError");
+    const statusMsg = document.getElementById("statusMsg");
+    const btn = this.querySelector('button[type="submit"]');
+    const originalText = btn.textContent;
+
+    emailError.textContent = "";
+    phoneError.textContent = "";
+    statusMsg.textContent = "";
+    statusMsg.className = "";
+
+    
+    const emailPattern = /^[a-zA-Z0-9._%+-]+@gmail\.com$/;
+    if (!emailPattern.test(email)) {
+        emailError.textContent = "Please enter a valid Gmail address.";
+        return;
+    }
+
+    // Phone number check (10 digits)
+    const phonePattern = /^[0-9]{10}$/;
+    if (!phonePattern.test(phone)) {
+        phoneError.textContent = "Phone number must contain 10 digits.";
+        return;
+    }
+
+    const userData = { username, password, email, phone, country };
+
+    try {
+        btn.disabled = true;
+        btn.textContent = "Registering...";
+
+        const response = await fetch("/api/register", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: JSON.stringify(userData)
+        });
+
+        const data = await response.json().catch(() => ({}));
+
+        if (response.ok) {
+            statusMsg.className = "success";
+            statusMsg.textContent = "✅ Registration successful! Redirecting...";
+
+            setTimeout(() => {
+                window.location.href = "home.html";
+            }, 1200);
+        } else {
+            statusMsg.className = "error";
+            statusMsg.textContent = data.error || "Registration failed.";
+        }
+    } catch (err) {
+        statusMsg.className = "error";
+        statusMsg.textContent = "Server error. Please try again later.";
+        console.error("Fetch error:", err);
+    } finally {
+        btn.disabled = false;
+        btn.textContent = originalText;
+    }
+});
+</script>
+</body>
+</html>

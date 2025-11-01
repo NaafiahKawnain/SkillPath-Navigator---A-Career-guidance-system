@@ -1,0 +1,141 @@
+﻿id ,career_id,resource_type,resource_name
+1,c1,course,Data Structures and Algorithms
+2,c1,course,Advanced Java Programming
+3,c1,project,Weather Prediction System
+4,c1,project,Student Result Analyzer
+5,c2,course,SQL for Data Analysis
+6,c2,course,Data Visualization Fundamentals
+7,c2,project,Sales Data Dashboard
+8,c2,project,Customer Behavior Analyzer
+9,c3,course,Machine Learning Fundamentals
+10,c3,course,Deep Learning Basics
+11,c3,project,Image Classifier
+12,c3,project,Spam Detection System
+13,c4,course,Artificial Intelligence Concepts
+14,c4,course,Natural Language Processing
+15,c4,project,Chatbot Development
+16,c4,project,Text Summarizer
+17,c5,course,Database Management Systems
+18,c5,course,Advanced SQL Queries
+19,c5,project,Hospital Management Database
+20,c5,project,Library Management System
+21,c6,course,Introduction to Cybersecurity
+22,c6,course,Ethical Hacking
+23,c6,project,Firewall Simulation
+24,c6,project,Phishing Detection Tool
+25,c7,course,Cloud Computing Basics
+26,c7,course,AWS Cloud Essentials
+27,c7,project,Deploy a Web App on AWS
+28,c7,project,Cloud File Storage System
+29,c8,course,UI/UX Principles
+30,c8,course,Design Thinking
+31,c8,project,Portfolio Website Design
+32,c8,project,Redesign a Mobile App
+33,c9,course,HTML CSS and JavaScript
+34,c9,course,Full Stack Web Development
+35,c9,project,E-commerce Website
+36,c9,project,Blogging Platform
+37,c10,course,Android App Development
+38,c10,course,iOS Development Basics
+39,c10,project,Food Delivery App
+40,c10,project,Fitness Tracker
+41,c11,course,Project Management Fundamentals
+42,c11,course,Agile and Scrum
+43,c11,project,Team Task Management System
+44,c11,project,Resource Planning Dashboard
+45,c12,course,System Analysis and Design
+46,c12,course,Requirements Engineering
+47,c12,project,Inventory System Analysis
+48,c12,project,College Admission System Analysis
+49,c13,course,Computer Networks
+50,c13,course,Network Security
+51,c13,project,LAN Setup and Monitoring
+52,c13,project,Network Traffic Analyzer
+53,c14,course,Data Science with Python
+54,c14,course,Big Data Analytics
+55,c14,project,Movie Recommendation System
+56,c14,project,Stock Price Prediction
+57,c15,course,Game Development Fundamentals
+58,c15,course,Unity Programming
+59,c15,project,2D Platformer Game
+60,c15,project,Multiplayer Game
+61,c16,course,DevOps Essentials
+62,c16,course,Docker and Kubernetes
+63,c16,project,CI/CD Pipeline Setup
+64,c16,project,Automated Deployment
+65,c17,course,Robotics Engineering Basics
+66,c17,course,Automation and Control Systems
+67,c17,project,Line Following Robot
+68,c17,project,Robotic Arm
+69,c18,course,Embedded Systems Basics
+70,c18,course,Microcontrollers Programming
+71,c18,project,IoT Smart Home
+72,c18,project,Temperature Monitoring System
+73,c19,course,Product Management Basics
+74,c19,course,Strategic Product Planning
+75,c19,project,Product Launch Strategy
+76,c19,project,Customer Feedback Analysis
+77,c20,course,Digital Marketing Essentials
+78,c20,course,SEO and Content Strategy
+79,c20,project,Social Media Campaign
+80,c20,project,E-commerce Marketing Plan
+81,c21,course,Business Analysis Fundamentals
+82,c21,course,Agile Business Analysis
+83,c21,project,Business Process Modeling
+84,c21,project,Requirement Gathering System
+85,c22,course,Entrepreneurship Basics
+86,c22,course,Startup Funding and Growth
+87,c22,project,Startup Business Plan
+88,c22,project,E-commerce Startup Prototype
+89,c23,course,Technical Writing Basics
+90,c23,course,Documentation Tools
+91,c23,project,Software Documentation
+92,c23,project,User Manual Creation
+93,c24,course,Research Methodology
+94,c24,course,Scientific Writing
+95,c24,project,Research Paper Drafting
+96,c24,project,Lab Experiment Documentation
+97,c25,course,AI for Product Managers
+98,c25,course,AI Strategy and Ethics
+99,c25,project,AI-based Recommendation Engine
+100,c25,project,AI Chatbot Product
+101,c26,course,Data Engineering on Google Cloud
+102,c26,course,Apache Spark Fundamentals
+103,c26,project,ETL Pipeline with Airflow
+104,c26,project,Real-time Streaming with Kafka
+105,c27,course,Site Reliability Engineering Foundations
+106,c27,course,Monitoring and Observability
+107,c27,project,Incident Response Playbook
+108,c27,project,Auto-scaling Infrastructure with Terraform
+109,c28,course,Software Testing Fundamentals
+110,c28,course,Test Automation with Selenium
+111,c28,project,End-to-End Test Suite for Web App
+112,c28,project,API Testing with Postman and Newman
+113,c29,course,Cloud Security Basics
+114,c29,course,AWS Security Specialty Prep
+115,c29,project,IAM Hardening and Least Privilege Lab
+116,c29,project,Threat Detection with GuardDuty
+117,c30,course,Unity AR/VR Development
+118,c30,course,3D Graphics for Developers
+119,c30,project,AR Furniture Placement App
+120,c30,project,VR Exploration Demo
+121,c31,course,Blockchain Fundamentals
+122,c31,course,Ethereum and Smart Contracts
+123,c31,project,ERC-20 Token DApp
+124,c31,project,NFT Marketplace Prototype
+125,c32,course,Introduction to Bioinformatics
+126,c32,course,Genomic Data Science
+127,c32,project,DNA Sequence Analysis Pipeline
+128,c32,project,Gene Expression Analysis
+129,c33,course,IT Support Fundamentals
+130,c33,course,Networking Basics for Support
+131,c33,project,Helpdesk Ticketing Simulation
+132,c33,project,PC Imaging and Troubleshooting Lab
+133,c34,course,Technical Program Management Basics
+134,c34,course,Risk Management for TPMs
+135,c34,project,Program Roadmap and RACI Matrix
+136,c34,project,Cross-Team Dependency Tracker
+137,c35,course,MLOps Fundamentals
+138,c35,course,MLflow and Model Deployment
+139,c35,project,CI/CD Pipeline for ML Model
+140,c35,project,Model Monitoring and Drift Detection

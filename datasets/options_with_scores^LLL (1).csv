@@ -1,0 +1,91 @@
+﻿options_id,question_id,option_text,score
+1,Q1,I usually guess or try random attempts.,1
+2,Q1,I look for patterns but sometimes get stuck midway.,2
+3,Q1,I break it down step by step until I find the solution.,3
+4,Q2,Ignore it unless it seems obvious.,1
+5,Q2,Observe it and try to confirm with some examples.,2
+6,Q2,Analyze it deeply and test its reliability.,3
+7,Q3,I get confused and wait for clarification.,1
+8,Q3,I compare the sources and pick the one that seems right.,2
+9,Q3,I logically evaluate both sides before making a conclusion.,3
+10,Q4,Keep trying fixes without much strategy.,1
+11,Q4,Try a few common fixes and search online if stuck.,2
+12,Q4,Trace the problem systematically until I isolate the issue.,3
+13,Q5,"Not really, I prefer shortcuts.",1
+14,Q5,"Sometimes, if it's not too complicated.",2
+15,Q5,"Yes, I enjoy breaking things into logical steps.",3
+16,Q6,Wait until I see something to copy/adapt.,1
+17,Q6,Mix inspiration from others with my own ideas.,2
+18,Q6,Brainstorm unique concepts from scratch.,3
+19,Q7,I usually give up quickly.,1
+20,Q7,I try a few different ideas before stopping.,2
+21,Q7,I experiment with multiple unconventional approaches until I find one.,3
+22,Q8,"Rarely, I stick to tried-and-tested ways.",1
+23,Q8,"Sometimes, if the risk is low.",2
+24,Q8,"Yes, I love experimenting and innovating.",3
+25,Q9,"Almost never, I just stick to one way.",1
+26,Q9,"Sometimes, if people don't understand.",2
+27,Q9,"Very often, I adjust my explanation for different people.",3
+28,Q10,Improving existing ones only.,1
+29,Q10,"Both, depending on the situation.",2
+30,Q10,Inventing something completely new.,3
+31,Q11,Not very comfortable.,1
+32,Q11,Somewhat comfortable if I have guidance.,2
+33,Q11,"Very comfortable, I enjoy it.",3
+34,Q12,I usually wait for someone to help me.,1
+35,Q12,I search online or ask peers.,2
+36,Q12,I try debugging systematically before seeking help.,3
+37,Q13,Only practical coding.,1
+38,Q13,A balance of both.,2
+39,Q13,"I enjoy both, but I dive into theory when needed.",3
+40,Q14,"Rarely update, I stick to what I already know.",1
+41,Q14,Sometimes follow tutorials or news.,2
+42,Q14,"Actively learn through courses, docs, and projects.",3
+43,Q15,Only building the application.,1
+44,Q15,"Both, but I lean more toward building.",2
+45,Q15,Both equally excite me.,3
+46,Q16,Use technical terms as they are.,1
+47,Q16,Simplify somewhat but still include jargon.,2
+48,Q16,Use simple analogies and plain language.,3
+49,Q17,"Not really, I prefer working alone.",1
+50,Q17,"Sometimes, if the group is engaging.",2
+51,Q17,"Yes, I enjoy contributing ideas in groups.",3
+52,Q18,I avoid giving feedback.,1
+53,Q18,I give it but keep it short.,2
+54,Q18,I give constructive and encouraging feedback.,3
+55,Q19,Very uncomfortable.,1
+56,Q19,A bit nervous but manageable.,2
+57,Q19,Confident and comfortable.,3
+58,Q20,Avoid them or ignore the issue.,1
+59,Q20,Clarify only when absolutely necessary.,2
+60,Q20,Address it openly and ensure everyone understands.,3
+61,Q21,Do whichever feels easiest.,1
+62,Q21,Rank them loosely by deadlines.,2
+63,Q21,Systematically prioritize by urgency and importance.,3
+64,Q22,"I don't plan much, just work as things come.",1
+65,Q22,I make a rough schedule.,2
+66,Q22,I create a clear timeline with milestones.,3
+67,Q23,"Only flexible, I dislike strict plans.",1
+68,Q23,A mix of both depending on the task.,2
+69,Q23,I prefer structured schedules.,3
+70,Q24,I easily lose focus.,1
+71,Q24,I get distracted but eventually return to work.,2
+72,Q24,I minimize distractions and stay focused.,3
+73,Q25,I focus mostly on speed.,1
+74,Q25,I try to balance but sometimes compromise.,2
+75,Q25,I maintain quality while managing time effectively.,3
+76,Q26,Jump in without a clear plan.,1
+77,Q26,Gather some info before starting.,2
+78,Q26,Analyze the problem and form a clear plan.,3
+79,Q27,"I rarely break it down, I just try to finish it.",1
+80,Q27,I divide it into a few major steps.,2
+81,Q27,I carefully split it into detailed smaller tasks.,3
+82,Q28,Always alone.,1
+83,Q28,Sometimes with others.,2
+84,Q28,I like combining my ideas with teamwork.,3
+85,Q29,I get discouraged and give up.,1
+86,Q29,I try again with small adjustments.,2
+87,Q29,I see it as learning and try new strategies.,3
+88,Q30,I assume it works if it doesn't break.,1
+89,Q30,I test it casually with a few cases.,2
+90,Q30,I thoroughly test with multiple scenarios.,3

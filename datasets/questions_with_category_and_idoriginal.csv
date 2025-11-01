@@ -1,0 +1,31 @@
+﻿question_id,category,question_text
+Q1,Logical Reasonning,"When solving puzzles or brain teasers, how do you usually approach them?"
+Q2,Logical Reasonning,"If you notice a pattern in data, what's your first instinct?"
+Q3,Logical Reasonning,You're faced with conflicting information - what's your strategy?
+Q4,Logical Reasonning,How do you usually approach a coding/debugging error?
+Q5,Logical Reasonning,Do you enjoy analyzing problems with step-by-step logic?
+Q6,Creativity,How do you usually generate ideas for a new project?
+Q7,Creativity,What's your approach when you're stuck with a problem that has no obvious solution?
+Q8,Creativity,Do you like experimenting with unconventional methods in projects?
+Q9,Creativity,How often do you come up with alternative ways to explain a concept?
+Q10,Creativity,What excites you more: improving an existing solution or inventing a new one?
+Q11,Technical Knowledge,How comfortable are you with learning new programming languages or tools?
+Q12,Technical Knowledge,"When you face a technical error, how do you usually solve it?"
+Q13,Technical Knowledge,Do you prefer practical coding or theoretical computer science concepts?
+Q14,Technical Knowledge,How do you usually keep your technical knowledge up to date?
+Q15,Technical Knowledge,Which excites you more: building a working application or understanding the algorithms behind it?
+Q16,Communication Skills,"When explaining a technical topic to non-technical people, how do you usually do it?"
+Q17,Communication Skills,Do you enjoy working in group discussions or brainstorming sessions?
+Q18,Communication Skills,How do you handle giving feedback to teammates?
+Q19,Communication Skills,What's your comfort level in presenting your work to an audience?
+Q20,Communication Skills,How do you usually resolve misunderstandings in team communication?
+Q21,Time Management,"When you have multiple tasks, how do you prioritize them?"
+Q22,Time Management,How do you usually plan long-term projects with multiple deadlines?
+Q23,Time Management,Do you prefer strict schedules or flexible workflows?
+Q24,Time Management,How do you usually deal with distractions while working?
+Q25,Time Management,How do you balance quality of work with speed of delivery?
+Q26,Problem Solving,What's your first step when tackling a completely new problem?
+Q27,Problem Solving,How do you usually break down a large task into smaller parts?
+Q28,Problem Solving,Do you prefer solving problems individually or collaborating with others?
+Q29,Problem Solving,How do you react when your first solution attempt fails?
+Q30,Problem Solving,How do you usually test if your solution works effectively?

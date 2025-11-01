@@ -1,0 +1,36 @@
+﻿career_id,career_name,description
+c1,Software Developer,A Software Developer designs and builds software applications to solve problems. 
+c2,Data Analyst,A Data Analyst analyzes data patterns and provides business insights. 
+c3,Machine Learning Engineer,A Machine Learning Engineer builds AI models that allow systems to learn from data.
+c4,AI Researcher,An AI Researcher explores advanced AI algorithms and techniques. 
+c5,Database Administrator,A Database Administrator manages and secures databases for organizations. 
+c6,Cybersecurity Specialist, A Cybersecurity Specialist protects systems and data from cyber threats.
+c7,Cloud Engineer,A Cloud Engineer designs and maintains cloud infrastructure. 
+c8,UI/UX Designer,A UI/UX Designer designs user interfaces and improves user experience. 
+c9,Web Developer,A Web Developer builds and maintains websites. 
+c10,Mobile App Developer,A Mobile App Developer creates applications for mobile platforms.
+c11,Project Manager,"A Project Manager leads projects, ensuring deadlines and goals are met. "
+c12,System Analyst,A System Analyst analyzes business needs and translates them into system requirements. 
+c13,Network Engineer,A Network Engineer manages and configures networking systems. 
+c14,Data Scientist,A Data Scientist applies advanced analytics and statistical models on data. 
+c15,Game Developer,A Game Developer creates interactive games for entertainment or learning. 
+c16,DevOps Engineer, A DevOps Engineer automates and integrates development and operations. 
+c17,Robotics Engineer,A Robotics Engineer designs and develops robotic systems. 
+c18,Embedded Systems Engineer,An Embedded Systems Engineer builds software for hardware devices. 
+c19,Product Manager,A Product Manager defines product vision and coordinates cross-functional teams.
+c20,Digital Marketer,A Digital Marketer plans and executes online marketing strategies.
+c21,Business Analyst, A Business Analyst bridges business requirements and technical implementation. 
+c22,Entrepreneur,An Entrepreneur builds and manages a startup or business venture.
+c23,Technical Writer,"A Technical Writer creates user manuals, guides, and documentation."
+c24,Research Scientist,A Research Scientist conducts experiments to innovate and discover solutions.
+c25,AI Product Manager,An AI Product Manager focuses on AI-based product strategy and execution. 
+c26,Data Engineer, A Data Engineer builds and maintains data pipelines and infrastructure. 
+c27,Site Reliability Engineer,An Site Reliability Engineer ensures reliability and scalability of systems in production.
+c28,QA/Test Engineer,An QA/Test Engineer designs and executes tests to ensure software quality. 
+c29,Cloud Security Engineer,A Cloud Security Engineer secures cloud infrastructure and workloads. 
+c30,AR/VR Developer,An AR/VR Developer builds augmented and virtual reality experiences. 
+c31,Blockchain Developer,A Blockchain Developer develops decentralized applications and smart contracts. 
+c32,Bioinformatics Specialist,An Bioinformatics Specialist applies computing to analyze biological data. 
+c33,IT Support Specialist,An IT Support Specialist provides technical support and resolves user issues.
+c34,Technical Program Manager,A Technical Program Manager coordinates cross-team technical programs and delivery. 
+c35,MLOps Engineer,An MLOps Engineer operationalizes machine learning models in production

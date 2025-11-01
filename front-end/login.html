@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Login - SkillPath Navigator</title>
+    <style>
+        body { 
+            font-family: Arial; 
+            margin: 0; 
+            padding: 0; 
+            height: 100vh;
+            background: linear-gradient(135deg, #d48bda, #ae8edb, #5a73e4);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
+        .container { 
+            max-width: 350px; 
+            background: whitesmoke; 
+            padding: 50px; 
+            border-radius: 10px;  
+            margin: 80px auto;
+        }
+        h2 { text-align: center; }
+        input { 
+            width: 100%; 
+            padding: 10px; 
+            margin: 8px 0; 
+            border: 1px solid #ccc; 
+            border-radius: 5px; 
+        }
+        button { 
+            background-color: #313030; 
+            color: white; 
+            border: none; 
+            padding: 10px; 
+            width: 100%; 
+            border-radius: 5px; 
+            cursor: pointer;
+        }
+        button:hover { background-color: #0056b3; }
+        .error {
+            color: red;
+            text-align: center;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h2>Login</h2>
+        <form id="loginForm">
+            <input type="text" id="username" placeholder="Username" required>
+            <input type="password" id="password" placeholder="Password" required>
+            <button type="submit">Login</button>
+            <p style="text-align:center; margin-top: 15px;">
+              Are you a new user?
+              <a href="register.html" style="color:#0056b3;">Sign-up here</a>
+            </p>
+            <p id="errorMsg" class="error"></p>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById("loginForm").addEventListener("submit", async function(e) {
+            e.preventDefault(); // stop normal form submit
+
+            const username = document.getElementById("username").value;
+            const password = document.getElementById("password").value;
+
+            try {
+                const response = await fetch("/api/login", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/json" },
+                    body: JSON.stringify({ username, password })
+                });
+
+                const data = await response.json();
+
+                if (response.ok) {
+
+                    // ✅ login success → go to home
+                    window.location.href = "home.html";
+                } else {
+                    // ❌ login failed → show message
+                    document.getElementById("errorMsg").innerText = data.error || "Invalid login.";
+                }
+            } catch (err) {
+                document.getElementById("errorMsg").innerText = "Server error. Please try again later.";
+            }
+        });
+    </script>
+</body>
+</html>

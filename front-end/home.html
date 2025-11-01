@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <meta charset="utf-8" />
+  <title>SkillPath Navigator</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <style>
+    :root{
+      --brand:#3c5ad6;
+      --brand2:#7d9cf5;
+      --ink:#222;
+      --muted:#555;
+      --line:#e6e6e6;
+      --bg: linear-gradient(135deg, #ffb6c1, #d8a9ff, #87cefa);
+    }
+    *{ box-sizing:border-box; }
+    body{
+      margin:0; font-family: Arial, sans-serif; color:var(--ink);
+      background: var(--bg); min-height:100vh;
+      display:grid; grid-template-rows:auto 1fr auto;
+    }
+
+    /* Header (brand + stepper) */
+    header{
+      background:#fff; border-bottom:1px solid var(--line);
+    }
+    .wrap{
+      max-width: 1000px; margin:0 auto; padding:10px 16px;
+      display:flex; flex-wrap:wrap; align-items:center; gap:10px; justify-content:space-between;
+    }
+    .brand{ font-weight:800; color:var(--brand); font-size:1.1rem; }
+
+    /* Stepper */
+    .stepper{
+      display:flex; align-items:center; gap:10px; flex:1; justify-content:center; min-width:280px;
+    }
+    .step-item{ display:flex; align-items:center; gap:8px; }
+    .circle{
+      width:26px; height:26px; border-radius:50%;
+      display:grid; place-items:center; font-weight:800; font-size:.9rem; color:#fff;
+      background:#999; /* pending */
+    }
+    .step-item span{ font-weight:700; color:#333; font-size:.95rem; }
+    .line{ height:2px; width:40px; background:#ddd; }
+
+    /* Main container */
+    .container{ max-width:1000px; margin:18px auto; padding:0 16px 24px; }
+
+    .card{
+      background:#fff; border:1px solid var(--line); border-radius:10px; padding:18px;
+    }
+    .hero h1{ margin:6px 0 6px; font-size:1.8rem; }
+    .hero p{ color:var(--muted); line-height:1.6; margin:8px 0 0; }
+    .btn-row{ display:flex; gap:10px; flex-wrap:wrap; margin-top:12px; }
+    .btn{
+      background:var(--brand); color:#fff; border:1px solid var(--brand);
+      padding:10px 14px; border-radius:8px; text-decoration:none; font-weight:600; cursor:pointer;
+    }
+
+    /* How it works (angled cards, all whitesmoke) */
+    .how{ margin-top:12px; }
+    .how h3{ margin:0 0 10px; color:#1f3aa6; }
+    .how-grid{
+      display:grid; grid-template-columns: 1fr; gap:12px;
+    }
+    @media(min-width: 850px){ .how-grid{ grid-template-columns: repeat(3, 1fr); } }
+
+    .step-card{
+      position:relative; border:1px solid var(--line); border-radius:10px; padding:14px 14px 16px;
+      background: whitesmoke;
+      /* left angled downward cut using clip-path */
+      clip-path: polygon(0 0, 100% 0, 100% 100%, 14px 100%, 0 calc(100% - 14px));
+      min-height: 130px;
+    }
+    .step-tag{
+      position:absolute; left:8px; top:8px;
+      display:flex; align-items:center; gap:8px; font-weight:800; color:#333;
+    }
+    .step-tri{
+      width: 0; height: 0;
+      border-left: 10px solid transparent;
+      border-right: 10px solid transparent;
+      border-top: 14px solid var(--brand); /* points down */
+      transform: rotate(90deg); /* tilt to feel "left angle triangle downward" */
+    }
+    .step-card h4{ margin:28px 0 6px; color:#2c2c2c; }
+    .step-card p{ margin:0; color:#444; line-height:1.6; }
+
+  </style>
+</head>
+<body>
+
+<header>
+  <div class="wrap">
+    <div class="brand">SkillPath Navigator</div>
+
+    <div class="stepper" aria-label="Flow">
+      <div class="step-item">
+        <div class="circle">1</div><span>Login</span>
+      </div>
+      <div class="line"></div>
+      <div class="step-item">
+        <div class="circle">2</div><span>Assessment</span>
+      </div>
+      <div class="line"></div>
+      <div class="step-item">
+        <div class="circle">3</div><span>Results</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container">
+  <!-- Hero -->
+  <section class="card hero">
+    <h1>Welcome!</h1>
+    <p>SkillPath Navigator is designed to help you discover your ideal career path based on your skills, 
+      interests, and personality. You will take an interactive assessment that evaluates different aspects
+      of your abilities and preferences. Based on your results, we’ll provide personalized career suggestions, 
+      recommended courses, and projects to help you grow in your chosen field.<br>
+      Take a short assessment (30 questions across 6 categories). We’ll score your strengths and suggest careers,
+      with a few courses and project ideas to help you start.
+    </p>
+    <div class="btn-row">
+      <a class="btn" href="assessment.html">Start assessment</a>
+    </div>
+  </section>
+
+  <!-- How it works -->
+  <section class="how">
+    <h3>How it works</h3>
+    <div class="how-grid">
+      <div class="step-card">
+        <div class="step-tag"><div class="step-tri"></div> Step 1</div>
+        <h4>Login or Register</h4>
+        <p>Create a simple account so we can keep your session.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-tag"><div class="step-tri"></div> Step 2</div>
+        <h4>Take the assessment</h4>
+        <p>Answer 30 quick questions and add a short note about your interests.</p>
+      </div>
+      <div class="step-card">
+        <div class="step-tag"><div class="step-tri"></div> Step 3</div>
+        <h4>See suggestions</h4>
+        <p>Review top categories and careers with courses and project ideas you can try.</p>
+      </div>
+    </div>
+  </section>
+</main>
+</body>
+</html>

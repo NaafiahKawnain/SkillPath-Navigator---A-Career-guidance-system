@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Results - SkillPath Navigator</title>
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      background: linear-gradient(135deg, #ffb6c1, #d8a9ff, #87cefa);
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 30px;
+    }
+    .container {
+      max-width: 960px;
+      width: 100%;
+    }
+    h1 {
+      text-align: center;
+      color: #333;
+      margin-bottom: 25px;
+    }
+    .muted {
+      color: #666;
+      text-align: center;
+      margin-bottom: 16px;
+    }
+    .card {
+      background: whitesmoke;
+      border-radius: 10px;
+      padding: 24px;
+      margin-bottom: 20px;
+      box-shadow: 0px 2px 6px rgba(0,0,0,0.1);
+    }
+    .card h2 {
+      margin: 0 0 10px;
+      color: #0056b3;
+      font-weight: 700;
+    }
+    .card p {
+      color: #444;
+      margin-bottom: 15px;
+    }
+    h3 {
+      margin: 12px 0 8px;
+      color: #333;
+    }
+    ul {
+      list-style-type: square;
+      padding-left: 20px;
+      color: #555;
+      margin: 0 0 15px;
+    }
+    .btn-row {
+      display: flex;
+      gap: 10px;
+      justify-content: center;
+      margin-top: 18px;
+    }
+    .btn {
+      background-color: #313030;
+      color: white;
+      border: none;
+      padding: 12px 20px;
+      border-radius: 5px;
+      cursor: pointer;
+      font-size: 1em;
+      text-align: center;
+    }
+    .btn:hover {
+      background-color: #0056b3;
+    }
+    .pill {
+      display: inline-block;
+      background: #e9f2ff;
+      color: #145DA0;
+      padding: 4px 8px;
+      border-radius: 999px;
+      margin: 2px;
+      font-size: 0.9em;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <h1>Your Career Path Results</h1>
+    <div id="summary" class="muted"></div>
+
+    <!-- Dynamic results will be injected here -->
+    <div id="results"></div>
+
+    <div class="btn-row">
+      <button class="btn" onclick="location.href='assessment.html'">Retake Assessment</button>
+      <button class="btn" onclick="location.href='home.html'">Go Back Home</button>
+    </div>
+  </div>
+
+  <script>
+    function escapeHtml(str) {
+      return String(str).replace(/[&<>"'`=\/]/g, s => ({
+        '&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;','/':'&#x2F;','`':'&#x60;','=':'&#x3D;'
+      }[s]));
+    }
+
+    function makeList(items) {
+      if (!items || !items.length) return "<p class='muted' style='text-align:left'>(none)</p>";
+      return "<ul>" + items.map(i => `<li>${escapeHtml(i)}</li>`).join("") + "</ul>";
+    }
+
+    function render() {
+      const resultsEl = document.getElementById("results");
+      const summaryEl = document.getElementById("summary");
+      const raw = sessionStorage.getItem("spnResult");
+      if (!raw) {
+        resultsEl.innerHTML = "<div class='card'><p class='muted'>No results found. Please take the assessment first.</p></div>";
+        return;
+      }
+
+      const data = JSON.parse(raw);
+      const user = sessionStorage.getItem("spnUser") || "";
+      const details = Array.isArray(data.career_details) ? data.career_details : [];
+
+      // summary: show top blended categories and whether NLP was used
+      const finalScores = Array.isArray(data.final_scores) ? data.final_scores.slice(0, 3) : [];
+      const nlpNote = data && data.nlp_used ? `Blend: ${Math.round((data.weights?.quiz ?? 0.7)*100)}% quiz + ${Math.round((data.weights?.nlp ?? 0.3)*100)}% NLP` : "Based on your quiz";
+      summaryEl.textContent = (finalScores.length
+        ? `Here are your top strengths: `
+          + finalScores.map(([c,_s]) => c).join(", ")
+          + ` • ${nlpNote}`
+        : nlpNote
+      );
+
+      const cardsHtml = details.map(d => {
+        const res = Array.isArray(d.resources) ? d.resources : [];
+        const courses = res.filter(r => (r.type || "").toLowerCase() === "course").map(r => r.name);
+        const projects = res.filter(r => (r.type || "").toLowerCase() === "project").map(r => r.name);
+
+        return `
+          <div class="card">
+            <h2>${escapeHtml(d.name)}</h2>
+            <p>${escapeHtml(d.description || "—")}</p>
+
+            <h3>Recommended Courses</h3>
+            ${makeList(courses)}
+
+            <h3>Suggested Projects</h3>
+            ${makeList(projects)}
+          </div>
+        `;
+      }).join("");
+
+      resultsEl.innerHTML = cardsHtml;
+    }
+
+    document.addEventListener("DOMContentLoaded", render);
+  </script>
+</body>
+</html>
