@@ -1,18 +1,18 @@
-**SkillPath Navigator**
+#**SkillPath Navigator**
 SkillPath Navigator is a small, offline web app that turns a short assessment plus a brief self‑description into clear, personalized career suggestions. It doesn’t just show job titles—it also attaches “what to do next” (courses and project ideas) so users can start building skills immediately.
 
-**What it is**
+#**What it is**
 A full‑stack, offline system:
 Backend: Python (Flask) with an SQLite database (single file: skillpath.db)
 Frontend: HTML, CSS, JavaScript
 
-**Highlights**
+#**Highlights**
 30‑question assessment across six categories (Logical Reasoning, Creativity, Technical Knowledge, Communication Skills, Time Management, Problem Solving)
 Lightweight keyword‑based NLP on a short “about me” note 
 Transparent scoring and simple ranking of careers mapped to top categories
 Each suggestion includes a brief description, courses, and project ideas
 
-**How it works (scoring)**
+#**How it works (scoring)**
 Quiz: Each category has 5 questions, each option scored 1–3. Per‑category quiz score is normalized as a percentage by dividing raw/15 (0..1).
 NLP: The note is scanned for simple category keywords (e.g., python, sql, design); matches are normalized by the highest hit so the best category becomes 1.0 (others 0..1).
 Blend per category:
@@ -36,6 +36,6 @@ GET /api/questions — quiz content
 POST /api/submit — returns category scores, ranked careers, and resources
 (Plus minimal register/login and a simple health check for local demos)
 
-**Why this approach**
+#**Why this approach**
 Explainable: simple percentages + a small keyword boost
 Practical: recommendations include concrete next steps (courses, projects)
