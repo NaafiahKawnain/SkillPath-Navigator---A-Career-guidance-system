@@ -1,4 +1,3 @@
-# init_db.py
 import sqlite3
 
 # connect to (or create) the database file
